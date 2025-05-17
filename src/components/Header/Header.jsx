@@ -33,7 +33,10 @@ function Header() {
 
           {/* search */}
           <div className={styles.search}>
-            <select name="category" className={styles.search__select}>
+            <select
+              name="category"
+              className={`${styles.search__select} no-style`}
+            >
               <option value="">All</option>
               <option value="electronics">Electronics</option>
               <option value="books">Books</option>
@@ -42,7 +45,7 @@ function Header() {
             <input
               type="text"
               placeholder="Search Amazon"
-              className={styles.search__input}
+              className={`${styles.search__input} no-style`}
             />
             <button className={styles.search__button}>
               <BsSearch size={20} />
@@ -57,7 +60,7 @@ function Header() {
                 alt="US Flag"
                 className={styles.flag}
               />
-              <select className={styles.language__select}>
+              <select className={`${styles.language__select} no-style`}>
                 <option value="en">EN</option>
                 <option value="es">ES</option>
               </select>

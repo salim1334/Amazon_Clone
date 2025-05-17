@@ -1,9 +1,96 @@
+:root {
+  --primary-color: #febd69;
+  --primary-shade: #d49644;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* General */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Roboto, Arial;
+  color: rgb(33, 33, 33);
+}
+
+input, select, button {
+  font-family: Roboto, Arial;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+.button_primary {
+  color: rgb(33, 33, 33);
+  background-color: rgb(255, 216, 20);
+  border: 1px solid rgb(252, 210, 0);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+.button_primary:hover {
+  background-color: rgb(247, 202, 0);
+  border: 1px solid rgb(242, 194, 0);
+}
+
+.button_primary:active {
+  background: rgb(255, 216, 20);
+  border-color: rgb(252, 210, 0);
+  box-shadow: none;
+}
+
+.button_secondary {
+  color: rgb(33, 33, 33);
+  background: white;
+  border: 1px solid rgb(213, 217, 217);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+.button_secondary:hover {
+  background-color: rgb(247, 250, 250);
+}
+
+.button_secondary:active {
+  background-color: rgb(237, 253, 255);
+  box-shadow: none;
+}
+
+.limit_text_to_2_lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.link_primary {
+  color: rgb(1, 124, 182);
+  cursor: pointer;
+}
+
+.link_primary:hover {
+  color: rgb(196, 80, 0);
+}
+
+/* Styles for dropdown selectors. */
+select:not(.no-style) {
+  color: rgb(33, 33, 33);
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgb(213, 217, 217);
+  border-radius: 8px;
+  padding: 3px 5px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+select:not(.no-style):focus,
+input:not(.no-style):focus {
+  outline: 2px solid rgb(255, 153, 0);
 }
