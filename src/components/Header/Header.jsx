@@ -1,7 +1,8 @@
 import styles from './Header.module.css';
 import { BsSearch } from 'react-icons/bs';
 import { SlLocationPin } from 'react-icons/sl';
-import { BiCart } from 'react-icons/bi';
+import cartIcon from '../../assets/cart-icon.png';
+import logo from '../../assets/amazon_logo.png';
 import LowerHeader from './LowerHeader';
 
 function Header() {
@@ -14,7 +15,7 @@ function Header() {
             <div className={styles.logo__wrapper}>
               <a href="/">
                 <img
-                  src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
+                  src={logo}
                   alt="Amazon Logo"
                   className={styles.logo}
                 />
@@ -54,7 +55,7 @@ function Header() {
 
           {/* Right side links */}
           <div className={styles.order__container}>
-            <a href="/" className={styles.language}>
+            <a href="#" className={styles.language}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1024px-Flag_of_the_United_State.svg.png"
                 alt="US Flag"
@@ -80,7 +81,12 @@ function Header() {
 
             {/* cart */}
             <a href="/cart" className={styles.cart}>
-              <BiCart size={38} className={styles.icon} />
+              <img
+                src={cartIcon}
+                alt=""
+                className={styles.icon}
+                width='40px'
+              />
               <span className={styles.cart__count}>0</span>
               <span className={styles.cart__label}>Cart</span>
             </a>
