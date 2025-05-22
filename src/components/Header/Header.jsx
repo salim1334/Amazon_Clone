@@ -4,6 +4,7 @@ import { SlLocationPin } from 'react-icons/sl';
 import cartIcon from '../../assets/cart-icon.png';
 import logo from '../../assets/amazon_logo.png';
 import LowerHeader from './LowerHeader';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -13,13 +14,13 @@ function Header() {
           <div className={styles.logo__container}>
             {/* Logo */}
             <div className={styles.logo__wrapper}>
-              <a href="/">
+              <Link to="/">
                 <img
                   src={logo}
                   alt="Amazon Logo"
                   className={styles.logo}
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Delivery */}
@@ -55,7 +56,7 @@ function Header() {
 
           {/* Right side links */}
           <div className={styles.order__container}>
-            <a href="#" className={styles.language}>
+            <Link to="#" className={styles.language}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1024px-Flag_of_the_United_State.svg.png"
                 alt="US Flag"
@@ -65,22 +66,22 @@ function Header() {
                 <option value="en">EN</option>
                 <option value="es">ES</option>
               </select>
-            </a>
+            </Link>
 
             {/* three components */}
-            <a href="/signin" className={styles.account}>
+            <Link to="/auth" className={styles.account}>
               <p className={styles.label}>Hello, sign in</p>
               <span className={styles.bold}>Account & Lists</span>
-            </a>
+            </Link>
 
             {/* orders */}
-            <a href="/orders" className={styles.orders}>
+            <Link to="/orders" className={styles.orders}>
               <p className={styles.label}>Returns</p>
               <span className={styles.bold}>& Orders</span>
-            </a>
+            </Link>
 
             {/* cart */}
-            <a href="/cart" className={styles.cart}>
+            <Link to="/cart" className={styles.cart}>
               <img
                 src={cartIcon}
                 alt=""
@@ -89,7 +90,7 @@ function Header() {
               />
               <span className={styles.cart__count}>0</span>
               <span className={styles.cart__label}>Cart</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

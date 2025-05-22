@@ -1,9 +1,12 @@
+import LayOut from '../../components/LayOut/LayOut';
 import styles from './Result.module.css';
 
 function Result() {
   return (
-    <div>Result</div>
-  )
+    <LayOut>
+      <div>Result</div>
+    </LayOut>
+  );
 }
 
 export default Result

@@ -1,9 +1,12 @@
+import LayOut from '../../components/LayOut/LayOut';
 import styles from './Orders.module.css';
 
 function Orders() {
   return (
-    <div>Orders</div>
-  )
+    <LayOut>
+      <div>Orders</div>
+    </LayOut>
+  );
 }
 
 export default Orders

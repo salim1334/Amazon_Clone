@@ -1,9 +1,12 @@
+import LayOut from '../../components/LayOut/LayOut';
 import styles from './Payment.module.css';
 
 function Payment() {
   return (
-    <div>Payment</div>
-  )
+    <LayOut>
+      <div>Payment</div>
+    </LayOut>
+  );
 }
 
 export default Payment

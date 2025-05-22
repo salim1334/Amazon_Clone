@@ -31,7 +31,7 @@
   margin-right: 5px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 650px) {
   .nav__list {
     gap: 10px;
   }

@@ -1,9 +1,12 @@
+import LayOut from '../../components/LayOut/LayOut';
 import styles from './ProductDetail.module.css';
 
 function ProductDetail() {
   return (
-    <div>ProductDetail</div>
-  )
+    <LayOut>
+      <div>ProductDetail</div>
+    </LayOut>
+  );
 }
 
 export default ProductDetail

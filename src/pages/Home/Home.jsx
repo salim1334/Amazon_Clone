@@ -6,9 +6,9 @@ import Product from "../../components/Product/Product"
 function Home() {
   return (
     <LayOut>
-      {/* <CarouselEffect />
+      <CarouselEffect />
       <Category />
-      <Product /> */}
+      <Product />
     </LayOut>
   )
 }

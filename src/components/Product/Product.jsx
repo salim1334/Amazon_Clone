@@ -9,7 +9,7 @@ function Product() {
   useEffect(() => { 
     axios.get('https://fakestoreapi.com/products')
       .then(res => setProducts(res.data))
-      .catch(err => console.error(err))
+      .catch(err => console.error(`Error on Fetching product: ${err}`))
   }, []);
 
   return (
