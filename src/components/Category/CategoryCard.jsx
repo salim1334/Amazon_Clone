@@ -1,15 +1,17 @@
+import { Link } from 'react-router-dom';
 import styles from './Category.module.css';
 
-function CategoryCard({ data: { title, imgLink } }) {
+// Renders a single category card with a link
+function CategoryCard({ data: { title, imgLink, name } }) {
+  
+  console.log(name);
   return (
     <div className={styles.category}>
-      <a href="">
-        <span>
-          <h2>{title}</h2>
-        </span>
+      <Link to={`/category/${name}`}>
+        <h2>{title}</h2>
         <img src={imgLink} alt={`Shop ${title} category`} />
-        <p>Shop Now</p>
-      </a>
+        <p className={styles.shopNow}>Shop Now</p>
+      </Link>
     </div>
   );
 }

@@ -1,27 +1,35 @@
-import Rating from '@mui/material/Rating'
+import Rating from '@mui/material/Rating';
 import CurrencyFormat from '../CurrencyFormat/CurrencyFormat';
 import styles from './ProductCard.module.css';
+import { Link } from 'react-router-dom';
 
-function ProductCard({ product: { title, price, rating, image } }) {
+function ProductCard({
+  product: { title, price, rating, image, id, description, category },
+  detail,
+}) {
   return (
     <>
-      <div className={styles.product_container}>
-        <a href="">
+      <div
+        className={`${styles.product_container} ${
+          detail ? styles.product_flexed : ''
+        }`}
+      >
+        <Link to={`/products/${id}`}>
           <div className={styles.product_image_container}>
             <img className={styles.product_image} src={image} />
           </div>
-        </a>
+        </Link>
 
         <div className={`${styles.product_name} limit_text_to_2_lines`}>
-          ${title}
+          {title}
         </div>
 
         <div className={styles.product_rating_container}>
-          <Rating value={rating.rate} precision={0.1} />
+          <Rating value={rating?.rate} precision={0.1} />
           <div
             className={`${styles.product_rating_count} ${styles.link_primary}`}
           >
-            {rating.count}
+            {rating?.count}
           </div>
         </div>
 
@@ -59,8 +67,14 @@ function ProductCard({ product: { title, price, rating, image } }) {
           Add to Cart
         </button>
       </div>
+      {detail && (
+        <div className={styles.productDescription}>
+          <h2 className={styles.descriptionTitle}>{category}</h2>
+          <p>{title} <br /><br /> {description || 'No description available.'}</p>
+        </div>
+      )}
     </>
   );
 }
 
-export default ProductCard
+export default ProductCard;

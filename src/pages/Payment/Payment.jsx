@@ -4,7 +4,7 @@ import styles from './Payment.module.css';
 function Payment() {
   return (
     <LayOut>
-      <div>Payment</div>
+      <h1>Payments Page</h1>
     </LayOut>
   );
 }

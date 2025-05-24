@@ -1,13 +1,11 @@
-.card__container {
+/* .card__container {
   width: 250px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   position: relative;
-}
-
+} */
 
 .products__container {
   display: grid;
-  justify-items: center;
   max-width: 1200px;
   margin: auto;
 }
