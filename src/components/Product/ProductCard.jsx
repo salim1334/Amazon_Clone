@@ -2,11 +2,45 @@ import Rating from '@mui/material/Rating';
 import CurrencyFormat from '../CurrencyFormat/CurrencyFormat';
 import styles from './ProductCard.module.css';
 import { Link } from 'react-router-dom';
+import { useContext, useRef, useState } from 'react';
+import { DataContext } from '../Context/Context';
+import { Type } from '../../Utility/action.type';
 
 function ProductCard({
   product: { title, price, rating, image, id, description, category },
   detail,
 }) {
+  const addedText = useRef(null);
+  const [quantity, setQuantity] = useState(1);
+
+  const [state, dispatch] = useContext(DataContext);
+  // console.log(useContext(DataContext))
+
+  // console.log(state.cart);
+
+  function addToCart() {
+    dispatch({
+      type: Type.ADD_TO_CART,
+      item: {
+        title,
+        price,
+        rating,
+        image,
+        id,
+        description,
+        category,
+      },
+    });
+
+    if (addedText.current) {
+      addedText.current.style.opacity = 1;
+
+      setTimeout(() => {
+        addedText.current.style.opacity = 0;
+      }, 4000);
+    }
+  }
+
   return (
     <>
       <div
@@ -38,7 +72,7 @@ function ProductCard({
         </div>
 
         <div className={styles.product_quantity_container}>
-          <select>
+          <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
             <option selected value="1">
               1
             </option>
@@ -56,13 +90,14 @@ function ProductCard({
 
         <div className={styles.product_spacer}></div>
 
-        <div className={styles.added_to_cart}>
-          <img src="images/icons/checkmark.png" />
+        <div className={styles.added_to_cart} ref={addedText}>
+          <img src="/checkmark.png" />
           Added
         </div>
 
         <button
           className={`${styles.add_to_cart_button} ${styles.js_add_to_cart} button_primary `}
+          onClick={addToCart}
         >
           Add to Cart
         </button>

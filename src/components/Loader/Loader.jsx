@@ -10,7 +10,6 @@ const Loader = () => {
           color="#F59E0B"
           height={6}
           width={200}
-          speedMultiplier={1}
           className={styles.loaderBar}
         />
         <p className={styles.loaderText}>Loading...</p>

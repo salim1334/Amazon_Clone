@@ -5,11 +5,16 @@ import cartIcon from '../../assets/cart-icon.png';
 import logo from '../../assets/amazon_logo.png';
 import LowerHeader from './LowerHeader';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { DataContext } from '../Context/Context';
 
 function Header() {
+  const [{cart}, dispatch] = useContext(DataContext);
+  const productQuantity = cart.length;
+
   return (
     <>
-      <section>
+      <section className={styles.upper_Header_wrapper}>
         <div className={styles.header__container}>
           <div className={styles.logo__container}>
             {/* Logo */}
@@ -84,11 +89,11 @@ function Header() {
             <Link to="/cart" className={styles.cart}>
               <img
                 src={cartIcon}
-                alt=""
+                alt="Cart Icon"
                 className={styles.icon}
                 width='40px'
               />
-              <span className={styles.cart__count}>0</span>
+              <span className={styles.cart__count}>{productQuantity}</span>
               <span className={styles.cart__label}>Cart</span>
             </Link>
           </div>

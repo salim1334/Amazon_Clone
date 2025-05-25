@@ -4,7 +4,6 @@ import styles from './Category.module.css';
 // Renders a single category card with a link
 function CategoryCard({ data: { title, imgLink, name } }) {
   
-  console.log(name);
   return (
     <div className={styles.category}>
       <Link to={`/category/${name}`}>

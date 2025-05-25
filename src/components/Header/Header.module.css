@@ -7,6 +7,12 @@
   height: 60px;
 }
 
+.upper_Header_wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 .logo__container {
   display: flex;
   align-items: center;
