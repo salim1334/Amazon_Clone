@@ -16,6 +16,10 @@
   border-bottom: none;
 }
 
+.product_container.product_flexed.product_cart {
+  min-width: 200px;
+}
+
 .product_image_container {
   display: flex;
   justify-content: center;

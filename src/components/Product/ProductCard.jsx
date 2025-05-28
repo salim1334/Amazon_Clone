@@ -9,14 +9,13 @@ import { Type } from '../../Utility/action.type';
 function ProductCard({
   product: { title, price, rating, image, id, description, category },
   detail,
+  cart,
+  notDisplayAdd,
 }) {
   const addedText = useRef(null);
   const [quantity, setQuantity] = useState(1);
 
-  const [state, dispatch] = useContext(DataContext);
-  // console.log(useContext(DataContext))
-
-  // console.log(state.cart);
+  const [_, dispatch] = useContext(DataContext);
 
   function addToCart() {
     dispatch({
@@ -37,7 +36,7 @@ function ProductCard({
 
       setTimeout(() => {
         addedText.current.style.opacity = 0;
-      }, 4000);
+      }, 3000);
     }
   }
 
@@ -46,7 +45,7 @@ function ProductCard({
       <div
         className={`${styles.product_container} ${
           detail ? styles.product_flexed : ''
-        }`}
+        }  ${cart ? styles.product_cart : ''}`}
       >
         <Link to={`/products/${id}`}>
           <div className={styles.product_image_container}>
@@ -72,7 +71,10 @@ function ProductCard({
         </div>
 
         <div className={styles.product_quantity_container}>
-          <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+          <select
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          >
             <option selected value="1">
               1
             </option>
@@ -95,17 +97,24 @@ function ProductCard({
           Added
         </div>
 
-        <button
-          className={`${styles.add_to_cart_button} ${styles.js_add_to_cart} button_primary `}
-          onClick={addToCart}
-        >
-          Add to Cart
-        </button>
+        {notDisplayAdd ? (
+          ''
+        ) : (
+          <button
+            className={`${styles.add_to_cart_button}  button_primary`}
+            onClick={addToCart}
+          >
+            Add to Cart
+          </button>
+        )}
       </div>
       {detail && (
         <div className={styles.productDescription}>
           <h2 className={styles.descriptionTitle}>{category}</h2>
-          <p>{title} <br /><br /> {description || 'No description available.'}</p>
+          <p>
+            {title} <br />
+            <br /> {description || 'No description available.'}
+          </p>
         </div>
       )}
     </>

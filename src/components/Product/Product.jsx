@@ -14,11 +14,11 @@ function Product() {
       .get('https://fakestoreapi.com/products')
       .then((res) => {
         setProducts(res.data);
-        setTimeout(() => setIsLoading(false), 500);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error(`Error on Fetching product: ${err}`);
-        setTimeout(() => setIsLoading(false), 500);
+        setIsLoading(false);
       });
   }, []);
 

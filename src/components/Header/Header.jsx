@@ -7,10 +7,12 @@ import LowerHeader from './LowerHeader';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { DataContext } from '../Context/Context';
+import { auth } from '../../../firebase/firebase';
 
 function Header() {
-  const [{cart}, dispatch] = useContext(DataContext);
-  const productQuantity = cart.length;
+  const [{cart, user}, _] = useContext(DataContext);
+  
+  const totalItem = cart?.reduce((amount, item) => item.quantity + amount, 0);
 
   return (
     <>
@@ -20,11 +22,7 @@ function Header() {
             {/* Logo */}
             <div className={styles.logo__wrapper}>
               <Link to="/">
-                <img
-                  src={logo}
-                  alt="Amazon Logo"
-                  className={styles.logo}
-                />
+                <img src={logo} alt="Amazon Logo" className={styles.logo} />
               </Link>
             </div>
 
@@ -74,9 +72,22 @@ function Header() {
             </Link>
 
             {/* three components */}
-            <Link to="/auth" className={styles.account}>
-              <p className={styles.label}>Hello, sign in</p>
-              <span className={styles.bold}>Account & Lists</span>
+            <Link to={!user && '/auth'} className={styles.account}>
+              <div>
+                {user ? (
+                  <>
+                    <p className={styles.label}>
+                      Hello {user?.email?.split('@')[0]}
+                    </p>
+                    <span className={styles.bold} onClick={() => auth.signOut()}>Sign Out</span>
+                  </>
+                ) : (
+                  <>
+                    <p className={styles.label}>Hello, sign in</p>
+                    <span className={styles.bold}>Account & Lists</span>
+                  </>
+                )}
+              </div>
             </Link>
 
             {/* orders */}
@@ -91,9 +102,9 @@ function Header() {
                 src={cartIcon}
                 alt="Cart Icon"
                 className={styles.icon}
-                width='40px'
+                width="40px"
               />
-              <span className={styles.cart__count}>{productQuantity}</span>
+              <span className={styles.cart__count}>{totalItem}</span>
               <span className={styles.cart__label}>Cart</span>
             </Link>
           </div>
