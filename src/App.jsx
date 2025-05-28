@@ -3,6 +3,7 @@ import Routing from './Router';
 import { DataContext } from './components/Context/Context';
 import { auth } from '../firebase/firebase';
 import { Type } from './Utility/action.type';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [{ user }, dispatch] = useContext(DataContext);
@@ -24,10 +25,11 @@ function App() {
   }, []);
 
   return (
-   
+    <>
+      <ToastContainer />
       <Routing />
-    
-  )
+    </>
+  );
 }
 
 export default App

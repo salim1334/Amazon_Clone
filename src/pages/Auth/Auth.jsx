@@ -13,6 +13,7 @@ import styles from './Auth.module.css';
 import logo from '../../assets/amazon_dark_logo.png';
 import { IoEyeOffOutline } from 'react-icons/io5';
 import { IoEyeOutline } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,7 +21,6 @@ const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState({
     signIn: false,
     signUp: false,
@@ -35,7 +35,6 @@ const Auth = () => {
     if (e.target.name === 'signin') {
       try {
         setIsLoading({ ...isLoading, signIn: true });
-        setError('');
         const userInfo = await signInWithEmailAndPassword(
           auth,
           email,
@@ -49,13 +48,12 @@ const Auth = () => {
         setIsLoading({ ...isLoading, signIn: false });
       } catch (err) {
         console.error(err);
-        setError(err.message);
         setIsLoading({ ...isLoading, signIn: false });
+        toast.error(err.code.split('/')[1].split('-').join(' '));
       }
     } else {
       try {
         setIsLoading({ ...isLoading, signUp: true });
-        setError('');
 
         // 1. Create user
         const userInfo = await createUserWithEmailAndPassword(
@@ -80,8 +78,8 @@ const Auth = () => {
         setIsLoading({ ...isLoading, signUp: false });
       } catch (err) {
         console.error(err);
-        setError(err.message);
         setIsLoading({ ...isLoading, signUp: false });
+        toast.error(err.code.split('/')[1].split('-').join(' '));
       }
     }
   }
@@ -187,10 +185,6 @@ const Auth = () => {
         <button onClick={toggleAuthMode} className={styles.toggleAuthBtn}>
           {isLogin ? 'Create your Amazon account' : 'Sign in to your account'}
         </button>
-
-        {error && (
-          <small style={{ paddingTop: '5px', color: 'tomato' }}>{error}</small>
-        )}
       </div>
     </div>
   );

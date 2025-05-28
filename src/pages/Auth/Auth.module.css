@@ -143,7 +143,7 @@
   background: linear-gradient(to bottom,#e7eaf0,#d9dce1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .container {
     margin-top: 50px
   }
