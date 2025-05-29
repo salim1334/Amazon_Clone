@@ -10,7 +10,7 @@ import { getFirestore } from 'firebase/firestore/lite';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyDpNT7zZmH9F6X7B4IbyN1PITEQXdmYtLs',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: 'clone-e1501.firebaseapp.com',
   projectId: 'clone-e1501',
   storageBucket: 'clone-e1501.firebasestorage.app',
