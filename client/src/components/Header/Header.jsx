@@ -12,8 +12,8 @@ import { auth } from '../../../firebase/firebase';
 function Header() {
   const [{ cart, user }, _] = useContext(DataContext);
   const userFirstName =
-  user?.displayName.split(' ')[0].charAt(0).toUpperCase() +
-  user?.displayName.split(' ')[0].slice(1).toLowerCase();
+  user?.displayName?.split(' ')[0].charAt(0).toUpperCase() +
+  user?.displayName?.split(' ')[0].slice(1).toLowerCase();
   
   const totalItem = cart?.reduce((amount, item) => item.quantity + amount, 0);
 
@@ -78,18 +78,10 @@ function Header() {
             <Link to={!user && '/auth'} className={styles.account}>
               <div>
                 {user ? (
-                  <>
-                    <p className={styles.label}>
-                      Hello,{' '}
-                      {userFirstName}
-                    </p>
-                    <span
-                      className={styles.bold}
-                      onClick={() => auth.signOut()}
-                    >
-                      Sign Out
-                    </span>
-                  </>
+                  <div onClick={() => auth.signOut()}>
+                    <p className={styles.label}>Hello, {userFirstName}</p>
+                    <span className={styles.bold}>Sign Out</span>
+                  </div>
                 ) : (
                   <>
                     <p className={styles.label}>Hello, sign in</p>

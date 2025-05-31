@@ -1,27 +1,20 @@
-// Import the functions you need from the SDKs you needcompat/app';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore/lite';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: 'clone-e1501.firebaseapp.com',
   projectId: 'clone-e1501',
-  storageBucket: 'clone-e1501.firebasestorage.app',
+  storageBucket: 'clone-e1501.appspot.com',
   messagingSenderId: '1058497022411',
   appId: '1:1058497022411:web:044dd2f77f881222620e4e',
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase (compat mode)
+const app = firebase.initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
-const db = getFirestore();
+const auth = firebase.auth();
+const db = firebase.firestore();
 
 export { auth, db };

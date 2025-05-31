@@ -11,6 +11,7 @@ function ProductCard({
   detail,
   cart,
   notDisplayAdd,
+  order
 }) {
   const addedText = useRef(null);
   const [quantity, setQuantity] = useState(1);
@@ -70,32 +71,36 @@ function ProductCard({
           <CurrencyFormat amount={price} />
         </div>
 
-        <div className={styles.product_quantity_container}>
-          <select
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          >
-            <option selected value="1">
-              1
-            </option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
+        {!order && (
+          <div className={styles.product_quantity_container}>
+            <select
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            >
+              <option selected value="1">
+                1
+              </option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        )}
 
         <div className={styles.product_spacer}></div>
 
-        <div className={styles.added_to_cart} ref={addedText}>
-          <img src="/checkmark.png" />
-          Added
-        </div>
+        {!notDisplayAdd && !order && (
+          <div className={styles.added_to_cart} ref={addedText}>
+            <img src="/checkmark.png" />
+            Added
+          </div>
+        )}
 
         {notDisplayAdd ? (
           ''

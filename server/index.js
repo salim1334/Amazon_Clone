@@ -10,8 +10,14 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Success',
+  });
+});
+
 app.post('/payment/create', async (req, res) => {
-  const total = Number(req.query.total); // convert to number
+  const total = parseInt(req.query.total); // convert to number
 
   if (total > 0) {
     try {
