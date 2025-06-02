@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000'
+  // baseURL: 'http://localhost:8000'
+  baseURL: 'https://amazon-clone-backend-8pmh.onrender.com/',
 });
 
 export { axiosInstance };
