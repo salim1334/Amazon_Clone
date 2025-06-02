@@ -14,7 +14,7 @@ function reducer(state, action) {
       if (!existingItem) {
         return {
           ...state,
-          cart: [...state.cart, { ...action.item, quantity: 1 }],
+          cart: [...state.cart, { ...action.item }],
         };
       } else {
         const updatedCart = state.cart.map((item) => {
@@ -40,6 +40,13 @@ function reducer(state, action) {
           newCart.splice(index, 1);
         }
       }
+      return {
+        ...state,
+        cart: newCart,
+      };
+    
+    case Type.DELETE_PRODUCT:
+      newCart.splice(index, 1);
       return {
         ...state,
         cart: newCart,

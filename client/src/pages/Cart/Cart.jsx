@@ -34,6 +34,13 @@ function Cart() {
     });
   }
 
+  function clear(id) {
+    dispatch({
+      type: Type.DELETE_PRODUCT,
+      id,
+    });
+  }
+
   return (
     <LayOut>
       {/* Checkout Header */}
@@ -80,6 +87,7 @@ function Cart() {
                     month: 'long',
                     day: 'numeric',
                   })}
+                  
                 </div>
 
                 {cart?.map((product) => (
@@ -121,7 +129,7 @@ function Cart() {
                           </div>
                           <button
                             className={styles.deleteButton}
-                            onClick={() => dec(product.id)}
+                            onClick={() => clear(product.id)}
                           >
                             Delete
                           </button>

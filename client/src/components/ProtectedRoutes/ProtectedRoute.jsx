@@ -12,7 +12,7 @@ function ProtectedRoute({children, msg, redirect}) {
           console.log('Navigating with state:', { msg, redirect });
       navigate('/auth', {state: {msg, redirect}});
     }
-  }, [user]);
+  }, [user, navigate, msg, redirect]);
 
   return children;
 }

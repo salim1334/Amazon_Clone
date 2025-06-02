@@ -29,6 +29,7 @@ function ProductCard({
         id,
         description,
         category,
+        quantity: quantity
       },
     });
 
@@ -75,7 +76,7 @@ function ProductCard({
           <div className={styles.product_quantity_container}>
             <select
               value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={(e) => setQuantity(Number(e.target.value))}
             >
               <option selected value="1">
                 1
