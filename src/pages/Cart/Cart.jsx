@@ -168,10 +168,12 @@ function Cart() {
                   <CurrencyFormat amount={total} />
                 </span>
               </div>
-
-              <button className={styles.placeOrderButton}>
-                <Link to="/payments">place Your Order</Link>
-              </button>
+              
+              <Link to="/payments">
+                <button className={styles.placeOrderButton}>
+                  place Your Order
+                </button>
+              </Link>
 
               <div className={styles.secureCheckout}>
                 <FaLock className={styles.lockIcon} />

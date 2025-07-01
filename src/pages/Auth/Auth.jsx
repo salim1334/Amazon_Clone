@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { auth } from '../../../firebase/firebase';
 import { useContext, useState } from 'react';
 import {
@@ -28,6 +28,10 @@ const Auth = () => {
 
   const [_, dispatch] = useContext(DataContext);
   const navigate = useNavigate();
+  const navStateData = useLocation();
+  
+  const redirect = navStateData?.state?.redirect || '/';
+  const msg = navStateData?.state?.msg;
 
   async function authHandler(e) {
     e.preventDefault();
@@ -44,7 +48,7 @@ const Auth = () => {
           type: Type.SET_USER,
           user: userInfo.user,
         });
-        navigate('/');
+        navigate(redirect);
         setIsLoading({ ...isLoading, signIn: false });
       } catch (err) {
         console.error(err);
@@ -74,7 +78,7 @@ const Auth = () => {
         });
 
         // 4. Reset loading state and redirect
-        navigate('/');
+        navigate(redirect);
         setIsLoading({ ...isLoading, signUp: false });
       } catch (err) {
         console.error(err);
@@ -105,6 +109,18 @@ const Auth = () => {
       </Link>
 
       <div className={styles.authBox}>
+        {msg && (
+          <p
+            style={{
+              padding: '5px',
+              textAlign: 'center',
+              color: 'red',
+              fontWeight: 'bold',
+            }}
+          >
+            {msg}
+          </p>
+        )}
         <h1>{isLogin ? 'Sign in' : 'Create account'}</h1>
 
         <form onSubmit={handleSubmit}>

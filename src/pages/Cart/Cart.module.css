@@ -274,6 +274,7 @@
 .placeOrderButton a {
   text-decoration: none;
   color: #131921;
+  width: 100%;
 }
 
 .placeOrderButton:hover {
