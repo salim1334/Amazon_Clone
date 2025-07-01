@@ -2,7 +2,7 @@
 
 A full-featured Amazon e-commerce clone built with React, Firebase, Stripe, and modern UI libraries. This project replicates the core shopping experience of Amazon, including authentication, product browsing, cart management, order history, and secure payments.
 
-![Amazon Clone Screenshot](public/amazoncloneapp.png)
+![Amazon Clone Screenshot](client/public/amazoncloneapp.png)
 
 ---
 
